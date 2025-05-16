@@ -55,11 +55,11 @@ Root
       </a><br/>
     </td>
     <td align="center">
-      <a href="https://github.com/">
-        <img src="https://avatars.githubusercontent.com/" width="150px;" alt=""/>
+      <a href="https://github.com/0430will">
+        <img src="https://avatars.githubusercontent.com/0430will" width="150px;" alt=""/>
         <br/>
         <sub>
-          <b>1</b>
+          <b>0430will</b>
         </sub>
       </a><br/>
     </td>
