@@ -73,4 +73,5 @@ const ex_startday_two = 1;
 
 const ex_sol_one = solution(ex_schedules_one, ex_timelogs_one, ex_startday_one);
 const ex_sol_two = solution(ex_schedules_two, ex_timelogs_two, ex_startday_two);
+// 입출력 예시 결과값: 3, 2
 console.log(ex_sol_one, ex_sol_two);
