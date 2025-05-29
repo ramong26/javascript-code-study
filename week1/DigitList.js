@@ -13,6 +13,7 @@
 //     }
 //   }
 
+<<<<<<< HEAD
 //   return true;
 // }
 
@@ -25,3 +26,8 @@ const y = "4";
 
 console.log(x == y);
 console.log(x === y);
+=======
+console.log(solution(["119", "97674223", "1195524421"]));
+console.log(solution(["123", "456", "789"]));
+console.log(solution(["12", "123", "1235", "567", "88"]));
+>>>>>>> 7c0c58e44a78b48a2e2868b1b6fcbeb5f1325e43
