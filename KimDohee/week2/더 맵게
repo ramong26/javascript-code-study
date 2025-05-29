@@ -1,0 +1,144 @@
+// 최소힙 클래스 구현
+class MinHeap {
+    constructor() {
+        this.heap = [];
+    }
+
+    // 힙의 크기 반환
+    size() {
+        return this.heap.length;
+    }
+    
+    // 최솟값(루트) 확인 (제거하지 않음)
+    peek() {
+        return this.heap[0];
+    }
+    
+    // 새로운 값을 힙에 삽입
+    push(value) {
+        // 1단계: 배열 맨 끝에 새 값 추가
+        this.heap.push(value);
+        
+        // 2단계: 부모와 비교하며 올바른 위치까지 위로 이동 (힙 상향 조정)
+        this.heapifyUp();
+    }
+    
+    // 최솟값을 제거하고 반환
+    pop() {
+        // 힙이 비어있으면 undefined 반환
+        if (this.heap.length === 0) return undefined;
+        
+        // 힙에 원소가 하나만 있으면 그것을 반환
+        if (this.heap.length === 1) return this.heap.pop();
+        
+        // 1단계: 루트값(최솟값) 저장
+        const min = this.heap[0];
+        
+        // 2단계: 마지막 원소를 루트로 이동
+        this.heap[0] = this.heap.pop();
+        
+        // 3단계: 자식과 비교하며 올바른 위치까지 아래로 이동 (힙 하향 조정)
+        this.heapifyDown();
+        
+        return min;
+    }
+    
+    // 상향 조정: 새로 삽입된 원소를 올바른 위치로 이동
+    heapifyUp() {
+        let index = this.size() - 1; // 마지막 원소부터 시작
+        
+        // 루트에 도달하거나 부모보다 크거나 같을 때까지 반복
+        while (index > 0) {
+            const parentIndex = Math.floor((index - 1) / 2);
+            
+            // 부모가 더 작거나 같으면 올바른 위치 → 종료
+            if (this.heap[parentIndex] <= this.heap[index]) break;
+            
+            // 부모와 자리 교체
+            [this.heap[parentIndex], this.heap[index]] = [this.heap[index], this.heap[parentIndex]];
+            
+            // 부모 위치로 이동하여 계속 확인
+            index = parentIndex;
+        }
+    }
+    
+    // 하향 조정: 루트 원소를 올바른 위치로 이동
+    heapifyDown() {
+        let index = 0; // 루트부터 시작
+        
+        // 왼쪽 자식이 존재하는 동안 반복 (왼쪽 자식이 없으면 오른쪽도 없음)
+        while (this.getLeftChildIndex(index) < this.size()) {
+            // 더 작은 자식의 인덱스 찾기
+            const smallerChildIndex = this.getSmallerChildIndex(index);
+            
+            // 현재 노드가 더 작은 자식보다 작거나 같으면 올바른 위치 → 종료
+            if (this.heap[index] <= this.heap[smallerChildIndex]) break;
+            
+            // 더 작은 자식과 자리 교체
+            [this.heap[index], this.heap[smallerChildIndex]] = [this.heap[smallerChildIndex], this.heap[index]];
+            
+            // 자식 위치로 이동하여 계속 확인
+            index = smallerChildIndex;
+        }
+    }
+    
+    // 왼쪽 자식 인덱스 계산
+    getLeftChildIndex(parentIndex) {
+        return 2 * parentIndex + 1;
+    }
+    
+    // 오른쪽 자식 인덱스 계산
+    getRightChildIndex(parentIndex) {
+        return 2 * parentIndex + 2;
+    }
+    
+    // 더 작은 값을 가진 자식의 인덱스 반환
+    getSmallerChildIndex(parentIndex) {
+        const leftChildIndex = this.getLeftChildIndex(parentIndex);
+        const rightChildIndex = this.getRightChildIndex(parentIndex);
+        
+        // 오른쪽 자식이 없으면 왼쪽 자식 반환
+        if (rightChildIndex >= this.size()) {
+            return leftChildIndex;
+        }
+        
+        // 두 자식 중 더 작은 값의 인덱스 반환
+        return this.heap[leftChildIndex] <= this.heap[rightChildIndex] ? leftChildIndex : rightChildIndex;
+    }
+}
+
+
+function solution(scoville, K) {
+    // 1. 최소힙 생성
+    const minHeap = new MinHeap();
+    
+    // 2. 모든 스코빌 지수를 힙에 추가
+    for (const score of scoville) {
+        minHeap.push(score);
+    }
+    
+    // 3. 모든 음식이 K이상이 될때까지 섞기
+    let mixCount = 0;
+    
+    while (minHeap.size() >= 2 && minHeap.peek() < K) {
+        const first = minHeap.pop();  // 가장 작은값
+        const second = minHeap.pop();  // 두번째로 작은 값
+        
+        // 스코빌 지수 계산 공식
+        const newScoville = first + (second * 2);
+        
+        // 새로운 음식을 힙에 추가
+        minHeap.push(newScoville);
+        
+        // 섞은 횟수 증가
+        mixCount++;
+    }
+    
+    // 4. 모든 음식의 스코빌 지수가 K 이상인지 확인
+    if (minHeap.size() === 0 || minHeap.peek() >= K ){
+        return mixCount;  // 성공: 섞은 횟수 반환
+    } else {
+        return -1;
+    }
+    
+}
