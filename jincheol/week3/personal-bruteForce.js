@@ -16,6 +16,7 @@
 
 // 실행: node jincheol/week3/personal-bruteForce.js
 
+// bfs를 사용
 function solution(n, wires) {
   let answer = 100; // 두 송전탑의 개수의 차는 100을 넘을 수 없음
   const nodes = {}; // 각 송전탑들이 연결된 것을 객체형으로
@@ -32,7 +33,7 @@ function solution(n, wires) {
   // wires 중 하나를 끊은 뒤 연결되는 송전탑들을 연결하여 개수를 리턴하는 함수
   const connection = (start, excluded) => {
     let count = 0; // 연결한 송전탑 개수
-    const ways = [start]; // 연결된 송전탑(전선) 처음 송전탑은 start
+    const ways = [start]; // start부터 연결되어있는 송전탑(전선)들, 처음 송전탑은 start
     const visited = []; // 방문한 송전탑
 
     // 연결된 송전탑(전선)이 있으면 계속 카운팅해야함
@@ -97,3 +98,59 @@ const ex_sol_two = solution(ex_n_two, ex_wires_two);
 const ex_sol_three = solution(ex_n_three, ex_wires_three);
 // 입출력 예시 결과값: 3, 0, 1
 console.log(ex_sol_one, ex_sol_two, ex_sol_three);
+
+// 다른 방법
+function solution2(n, wires) {
+  let answer = 98; // 차이의 최댓값은 98임 (99 - 1)
+  const treeMap = new Map(); // Map을 사용하여 연결된 송전탑들 저장
+
+  // index의 0번이 아닌 1번째 송전탑부터 있기에 1부터 Map 초기화
+  for (let i = 1; i <= n; i++) treeMap.set(i, []);
+  // wires를 순회하면서 treeMap에 모든 송전탑들을 key로 추가하고 연결된 송전탑을 value[]로 추가
+  wires.forEach(([v1, v2]) => {
+    treeMap.get(v1).push(v2);
+    treeMap.get(v2).push(v1);
+  });
+
+  // 전선 제거함수
+  const excludeWire = (startPoint, excludeWire) => {
+    let count = 0; // 연결된 송전탑 개수
+    const visited = new Array(n + 1).fill(false); // 방문한 송전탑을 체크할 배열, 송전탑은 1번부터 있기 때문에 n + 1로 생성
+    visited[startPoint] = true; // startPoint는 방문했으니 true
+    const ways = [startPoint]; // startPoint로부터 연결되어있는 모든 송전탑들을 저장할 배열
+
+    // 연결되어있는 송전탑이 있을 때
+    while (ways.length) {
+      const currentPoint = ways.shift(); // 현재 송전탑 추출
+      count++; // 연결된 송전탑 개수++
+
+      // treeMap에서 현재 송전탑과 연결된 송전탑들을 get하여 순회
+      treeMap.get(currentPoint).forEach((point) => {
+        // 현재 송전탑과 연결된 송전탑 전선이 제거하려는 전선인지 확인
+        const isExcludeWire =
+          (currentPoint === excludeWire[0] && point === excludeWire[1]) ||
+          (currentPoint === excludeWire[1] && point === excludeWire[0]);
+        if (isExcludeWire) return; // 제거하려는 전선이면 return
+        // 방문하지 않은 송전탑일 경우에
+        if (visited[point] !== true) {
+          visited[point] = true; // 방문한 송전탑으로 변경
+          ways.push(point); // 정상적으로 연결된 송전탑이니 ways에 push
+        }
+      });
+    }
+
+    // count return
+    return count;
+  };
+
+  // wires를 순회
+  wires.forEach(([v1, v2]) => {
+    // v1을 기준으로 현재 전선을 끊었을 때 연결된 송전탑 개수
+    const firstCount = excludeWire(v1, [v1, v2]);
+    const secondCount = n - firstCount; // 총 송전탑 개수에서 firstCount 빼면 나머지 송전탑의 개수
+    const gap = Math.abs(firstCount - secondCount); // 절댓값 계산
+    answer = Math.min(answer, gap); // answer에 기존 gap과 새로은 gap중 낮은 값 할당
+  });
+
+  return answer;
+}
