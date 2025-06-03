@@ -1,0 +1,20 @@
+function solution(citations) {
+    // citations 배열을 내림차순으로 정렬
+    citations.sort((a, b) => b - a);
+    
+    // 조건을 만족하는 h의 최댓값
+    let h = 0;
+    
+    // citations를 순회하며 h의 조건 확인
+    // citations[i]: 현재 논문의 인용 횟수
+    // i+1: 현재까지 확인한 논문의 개수
+    for (let i = 0; i < citations.length; i++) {
+        if (citations[i] >= i + 1) {  // 인용 횟수가 i + 1번 이상
+            h = i + 1;
+        } else {
+            break;  // 조건을 만족하지 않으면 확인하지 않음
+        }
+    }
+    
+    return h;
+}
