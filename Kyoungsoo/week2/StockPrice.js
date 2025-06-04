@@ -1,3 +1,6 @@
+// 스택/큐의 주식가격 lvl 2 문제입니다.
+// https://school.programmers.co.kr/learn/courses/30/lessons/42584
+
 function StockPrice(prices) {
   const answer = [];
 
