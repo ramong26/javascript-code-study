@@ -11,26 +11,30 @@
 
 // 실행: node jincheol/week4/study-greedy1.js
 
+// 가장 큰 수는 앞 자리부터 커야함
 function solution(number, k) {
   let answer = '';
-  const numbers = [];
-  let deleteCount = k;
+  const numbers = []; // 작은 수를 제거하면서 큰 수를 저장할 스택
+  let deleteCount = k; // 남은 제거 횟수
 
   for (let num of number) {
+    // 스택에 숫자가 있고, 남은 제거 횟수가 있고, 스택의 마지막 숫자가 num보다 작을 때
     while (numbers.length && deleteCount && numbers.at(-1) < num) {
-      numbers.pop();
-      deleteCount--;
+      numbers.pop(); // 스택의 마지막 요소를 제거
+      deleteCount--; // 제거 횟수 --
     }
 
-    numbers.push(num);
+    numbers.push(num); // 스택에 남은 수는 현재 num보다 같거나 큰 수기에 push
   }
 
+  // numbers는 내림차순으로 정렬되어 있는 상태
+  // 남은 제거 횟수가 있을 경우
   while (deleteCount) {
-    numbers.pop();
-    deleteCount--;
+    numbers.pop(); // 마지막 요소(제일 작은 수)제거
+    deleteCount--; // 제거 횟수 감소
   }
 
-  answer = numbers.join('');
+  answer = numbers.join(''); // answer에 numbers 배열을 문자열로 만든 값을 할당
 
   return answer;
 }
