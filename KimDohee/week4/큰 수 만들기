@@ -1,0 +1,20 @@
+function solution(number, k) {
+    let stack = [];
+
+    // 현재 숫자가 스택의 마지막 숫자보다 크면 작은 숫자들을 제거
+    for (let num of number) {
+        while (k > 0 && stack.length > 0 && stack[stack.length - 1] < num) {
+          stack.pop();
+          k--;  // 숫자제거 횟수 k를 줄임
+        }
+        stack.push(num);
+      }
+
+    // 아직 제거해야 할 숫자가 남아있다면 뒤에서부터 제거
+    while (k > 0) {
+        stack.pop();
+        k--;
+    }
+
+    return stack.length === 0 ? "0" : stack.join('');
+}
