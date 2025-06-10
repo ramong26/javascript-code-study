@@ -16,34 +16,47 @@
 
 function solution(n, costs) {
   let answer = 0;
+  // 가장 비용이 적은 다리부터 건설하기 위해 오름차순으로 정렬
   const ascendingCosts = costs.sort((a, b) => a[2] - b[2]);
+  // islandGroup은 서로 연결된 섬들의 묶음, 원소는 묶음의 대표(부모) 섬 번호
+  // 처음에는 n개의 묶음(하나의 섬)이 존재하고 부모 섬은 자기 자신이다(index);
   const islandGroup = Array.from({ length: n }, (_, i) => i);
 
+  // islandId(섬의 ID)가 속한 연결된 선의 그룹에서 부모 섬을 찾아 반환하는 함수
   const getParentIsland = (islandId) => {
+    // 그룹의 부모가 자기 자신이면 자신 ID return
     if (islandGroup[islandId] === islandId) return islandId;
 
+    // 해당 그룹의 최종 부모 섬을 찾기 위해 재귀
+    // 최종 부모 섬을 재할당을 통해 이후 탐색 시간 단축
     islandGroup[islandId] = getParentIsland(islandGroup[islandId]);
     return islandGroup[islandId];
   };
 
-  const joinGroup = (islandA, islandB) => {
-    const parentA = getParentIsland(islandA);
-    const parentB = getParentIsland(islandB);
-
-    if (parentA !== parentB) {
-      islandGroup[parentB] = parentA;
+  // 두 그룹(연결된 섬들의 묶음)을 합치는 함수 -> 다리를 이음
+  const joinGroup = (from, to) => {
+    // 각 그룹의 대표 섬을 찾음
+    const parentFrom = getParentIsland(from);
+    const parentTo = getParentIsland(to);
+    // 각 그룹의 대표가 다르면 이어지지 않은 상태
+    if (parentFrom !== parentTo) {
+      islandGroup[parentTo] = parentFrom; // parentTo가 속한 그룹의 섬을 잇고 대표를 설정 parentFrom로 설정
       return true;
     }
-    return false;
+    return false; // 각 그룹의 대표가 같으면 이어진 상태라 false
   };
 
-  let connectedBridge = 0;
+  let connectedBridge = 0; // 연결한 다리 카운트
 
-  for (let [islandA, islandB, cost] of ascendingCosts) {
-    if (joinGroup(islandA, islandB)) {
+  // 정렬된 costs를 순회하면서
+  for (let [from, to, cost] of ascendingCosts) {
+    // from, to를 연결
+    if (joinGroup(from, to)) {
+      // 연결 성공 시 cost를 더해주고 카운트 ++
       answer += cost;
       connectedBridge++;
 
+      // 모든 섬을 연결하는 최소의 다리 수는 n - 1, 연결한 다리 카운트가 n - 1이 되면 break
       if (connectedBridge === n - 1) break;
     }
   }
