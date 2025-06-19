@@ -10,6 +10,9 @@ function biggestNumber(number, k) {
         maxDigit = number[i];
         start = i + 1;
       }
+      if (i >= number.length - 1) {
+        break;
+      }
     }
     answer += maxDigit;
   }
