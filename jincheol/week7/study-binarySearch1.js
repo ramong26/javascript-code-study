@@ -41,3 +41,10 @@ function solution(n, times) {
 
   return answer;
 }
+
+const ex_n = 6;
+const ex_times = [7, 10];
+
+const ex_sol = solution(ex_n, ex_times);
+// 입출력 예시 결과값: 28
+console.log(ex_sol);
