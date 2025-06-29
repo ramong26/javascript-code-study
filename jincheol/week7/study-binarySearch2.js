@@ -60,3 +60,11 @@ function solution(distance, rocks, n) {
 
   return answer;
 }
+
+const ex_distance = 25;
+const ex_rocks = [2, 14, 11, 21, 17];
+const ex_n = 2;
+
+const ex_sol = solution(ex_distance, ex_rocks, ex_n);
+// 입출력 예시 결과값: 4
+console.log(ex_sol);
