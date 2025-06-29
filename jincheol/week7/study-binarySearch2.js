@@ -19,3 +19,44 @@
 // n 은 1 이상 바위의 개수 이하입니다.
 
 // 실행: node jincheol/week7/study-binarySearch2.js
+
+function solution(distance, rocks, n) {
+  rocks.sort((a, b) => a - b); // 바위들의 거리를 오름차순으로 정렬
+  const ascendingRocks = [0, ...rocks, distance]; // 계산 편의를 위해 시작지점 0과 도착점 추가
+
+  let answer = 0;
+  let low = 1; // 최소 바위 사이 거리
+  let high = distance; // 최대 바위 사이 거리
+
+  while (low <= high) {
+    let mid = Math.floor((low + high) / 2); // 중간 지점
+    let removeRockCount = 0; // 바위 제거 카운트
+    let position = 0; // 바위 사이의 거리를 계산하기 위한 이전 바위 지점
+
+    // 바위 사이 값 오류 for 루프
+    // for (let i = 0; i < ascendingRocks.length - 1; i++) {
+    //   const first = ascendingRocks.at(i);
+    //   const second = ascendingRocks.at(i + 1);
+    //   const gap = second - first;
+    // }
+
+    for (let i = 1; i < ascendingRocks.length; i++) {
+      const curRock = ascendingRocks.at(i); // 현재 바위
+      const gap = curRock - position; // 바위 사이 거리 계산
+
+      // 바위 사이 거리가 mid보다 작으면 제거, 최소 거리 mid를 확보하기 위해서
+      if (gap < mid) removeRockCount++;
+      else position = curRock; // mid 이상이면 현재 바위를 남기고 다음 거리 측정을 위해 현재 바위를 position으로 설정
+    }
+
+    // n개 이하로 제거 가능하면
+    if (removeRockCount <= n) {
+      answer = mid; // 현재 가능한 값은 mid라 할당
+      low = mid + 1; // 더 큰 mid 값을 찾기 위해 low 증가
+    } else {
+      high = mid - 1; // n개 초과로 제거해야하면 mid를 줄여야하기에 high 감소
+    }
+  }
+
+  return answer;
+}
