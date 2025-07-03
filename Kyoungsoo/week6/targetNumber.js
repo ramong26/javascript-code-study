@@ -1,3 +1,6 @@
+//프로그래머스 깊이/너비 우선 탐색(DFS/BFS) lvl 2 타겟넘버 문제 풀이
+//https://school.programmers.co.kr/learn/courses/30/lessons/43165
+
 function solution(numbers, target) {
   let count = 0;
 
