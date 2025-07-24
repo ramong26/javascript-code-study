@@ -54,15 +54,7 @@ Root
         </sub>
       </a><br/>
     </td>
-    <td align="center">
-      <a href="https://github.com/0430will">
-        <img src="https://avatars.githubusercontent.com/0430will" width="150px;" alt=""/>
-        <br/>
-        <sub>
-          <b>0430will</b>
-        </sub>
-      </a><br/>
-    </td>
+
 </table>
 
 ### 📅 주차별 계획
@@ -77,5 +69,8 @@ Root
 | 6 주차  | 깊이&너비 우선탐색(DFS/BFS)  |
 | 7 주차  | 이분탐색                   |
 | 8 주차  | 그래프                    |
-| 9 주차  | (추가예정)                 |
+| 9 주차  | 브루트포스                 |
       
+### 💻 자바스크립트로 백준 풀기 세팅 참고
+- https://comp-jae.tistory.com/892
+- https://nyang-in.tistory.com/156
