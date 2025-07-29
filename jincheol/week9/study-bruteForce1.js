@@ -8,15 +8,9 @@ const input = fs
   .toString()
   .split('\n');
 
-const ex_n_one = parseInt(input[0]);
-const ex_numbers_one = input[1].split(' ').map(Number);
-const ex_operators_one = input[2].split(' ').map(Number);
-const ex_n_two = parseInt(input[3]);
-const ex_numbers_two = input[4].split(' ').map(Number);
-const ex_operators_two = input[5].split(' ').map(Number);
-const ex_n_three = parseInt(input[6]);
-const ex_numbers_three = input[7].split(' ').map(Number);
-const ex_operators_three = input[8].split(' ').map(Number);
+const N = parseInt(input[0]);
+const numbers = input[1].split(' ').map(Number);
+const operators = input[2].split(' ').map(Number);
 
 const calc = (a, b, operatorIndex) => {
   switch (operatorIndex) {
@@ -81,6 +75,4 @@ const solution = (n, numbers, operators) => {
   console.log(min);
 };
 
-solution(ex_n_one, ex_numbers_one, ex_operators_one);
-solution(ex_n_two, ex_numbers_two, ex_operators_two);
-solution(ex_n_three, ex_numbers_three, ex_operators_three);
+solution(N, numbers, operators);
