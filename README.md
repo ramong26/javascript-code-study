@@ -54,7 +54,15 @@ Root
         </sub>
       </a><br/>
     </td>
-
+    <td align="center">
+      <a href="https://github.com/ramong26">
+        <img src="https://avatars.githubusercontent.com/ramong26" width="150px;" alt=""/>
+        <br/>
+        <sub>
+          <b>ramong26</b>
+        </sub>
+      </a><br/>
+    </td>
 </table>
 
 ### 📅 주차별 계획
