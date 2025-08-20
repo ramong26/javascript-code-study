@@ -13,7 +13,7 @@ const N = basic[0][1]; // 11
 let minLine = 1;
 let num = 0;
 let maxLine = Math.max(...cleanLine);
-//  console.log(`num: ${num}`)
+//  console.log(`num: ${num}`)ㅇㅇ
 for(; minLine <= maxLine; ) {
   let midLine = Math.floor((minLine + maxLine) / 2);
   let sum = 0;
