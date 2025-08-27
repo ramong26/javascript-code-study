@@ -16,11 +16,13 @@ const input = fs
  * @param {number[]} times 각 사람들이 인출할 때 걸리는 시간들
  */
 const solution = (N, times) => {
-  const ascendingTimes = times.sort((a, b) => a - b);
+  const ascendingTimes = times.sort((a, b) => a - b); // 오름차순 정렬
 
   let answer = 0;
   for (let i = 0; i < N; i++) {
-    answer += ascendingTimes[i];
+    answer += ascendingTimes[i]; // 본인 차례 시간 더하기
+
+    // 본인 이전 사람들이 인출했을 때 걸리는 시간 더하기
     for (let j = 0; j < i; j++) {
       answer += ascendingTimes[j];
     }
