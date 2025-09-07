@@ -11,26 +11,30 @@ const input = fs
   .split('\n');
 
 /**
- *
+ * 최솟값을 찾아야 하기에 큰 수를 빼야함 -> 첫 - 이후 값들을 괄호로 묶기
  * @param {string} fomula 수식
  */
 const solution = (fomula) => {
-  const fomulaWithoutMinus = fomula.split('-');
-  let answer = 0;
+  const fomulaWithoutMinus = fomula.split('-'); // -를 제외하기
+  let answer = 0; // 정답
 
+  // 첫번째 원소는 무조건 더해줘야 한다.
+  // +가 있을 수도 있기에 split 후 더해주기
   const firstSum = fomulaWithoutMinus
     .shift()
     .split('+')
     .reduce((acc, cur) => acc + Number(cur), 0);
 
-  answer += firstSum;
+  answer += firstSum; // 정답에 더해주기
 
+  // 첫번째 - 이후 값들을 괄호로 묶기
   for (let i = 0; i < fomulaWithoutMinus.length; i++) {
+    // 이후 값에 +가 있을 수 있으니 split 후 더해주기
     const curSum = fomulaWithoutMinus[i]
       .split('+')
       .reduce((acc, cur) => acc + Number(cur), 0);
 
-    answer -= curSum;
+    answer -= curSum; // 정답에서 빼주기
   }
 
   return answer;
