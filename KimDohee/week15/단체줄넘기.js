@@ -29,7 +29,6 @@ function solution(input) {
   
   return maxParticipants;
 
-  return N;
 }
 
 // 백준 제출용 코드
