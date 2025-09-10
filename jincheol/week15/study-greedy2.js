@@ -30,7 +30,7 @@ const solution = (N, numbers) => {
   }
 
   positiveNumbers.sort((a, b) => b - a); // 양수는 내림차순
-  negativeNumbers.sort((a, b) => a - b); // 음수는 절대값 기준 오름차순
+  negativeNumbers.sort((a, b) => a - b); // 음수는 오름차순 (절대값 기준 내림차순)
   let answer = 0; // 정답
 
   // 양수를 순회
