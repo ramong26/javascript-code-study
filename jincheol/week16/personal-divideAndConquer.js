@@ -18,6 +18,7 @@ const input = fs
  * @returns
  */
 const solution = (N, M, A, B) => {
+  // concat으로 배열을 합치고 sort로 오름차순 정렬, join으로 공백을 사이에 둔 문자열로 변경
   return A.concat(B)
     .sort((a, b) => a - b)
     .join(' ');
