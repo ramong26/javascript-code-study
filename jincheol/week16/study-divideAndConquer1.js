@@ -18,15 +18,17 @@ const input = fs
  * @param {number[]} numbers 구별해야 할 정수
  */
 const solution = (N, cards, M, numbers) => {
-  const cardSet = new Set(cards);
-  const answer = [];
+  const cardSet = new Set(cards); // 갖고 있는 카드들을 Set에 저장
+  const answer = []; // 소유 여부를 저장할 배열 (0과 1)
 
+  // 구별할 정수들을 순회
   for (let num of numbers) {
-    const hasNum = cardSet.has(num);
-    if (hasNum) answer.push(1);
-    else answer.push(0);
+    const hasNum = cardSet.has(num); // 갖고 있는지 확인
+    if (hasNum) answer.push(1); // 갖고 있으면 1
+    else answer.push(0); // 없으면 0
   }
 
+  // 문자열로 공백을 추가하여 return
   return answer.join(' ');
 };
 
