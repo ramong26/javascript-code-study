@@ -33,7 +33,7 @@ const solution = (N, cards, M, numbers) => {
     answer.push(count); // 배열에 추가
   }
 
-  // 무자열로 공백을 추가하여 return
+  // 문자열로 공백을 추가하여 return
   return answer.join(' ');
 };
 
