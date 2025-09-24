@@ -68,7 +68,7 @@ const solution = (d, blockNum, x, y) => {
       afterX -= half; // 왼쪽 절반 빼주기
       afterY -= half; // 아래 절반 빼주기
     }
-    // 조각이 오른쪽 위에 위치할 때
+    // 조각이 왼쪽 위에 위치할 때
     else if (afterX < half && afterY >= half) {
       answer += '2'; // 번호 추가
       afterY -= half; // 아래 절반 빼주기
