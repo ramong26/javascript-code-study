@@ -16,6 +16,7 @@ const input = fs
  */
 const solution = (N, students) => {
   students.sort((a, b) => {
+    // 점수가 같으면 다른 조건 => 다르면 조건대로
     if (a[1] !== b[1]) return b[1] - a[1]; // 국어 점수 내림차순
     if (a[2] !== b[2]) return a[2] - b[2]; // 국어 점수 같으면 영어 점수 오름차 순
     if (a[3] !== b[3]) return b[3] - a[3]; // 국어 영어 같으면 수학 점수 내림차 순
@@ -23,9 +24,9 @@ const solution = (N, students) => {
     return 0;
   });
 
-  let answer = '';
+  let answer = ''; // 정답 문자열
   for (const [name, ...scores] of students) {
-    answer += name + '\n';
+    answer += name + '\n'; // 이름 추가 후 줄 바꿈
   }
 
   return answer;
