@@ -12,7 +12,7 @@ const input = fs
 /**
  *
  * @param {number} N 학생 수
- * @param {string[][]} students 학생의 이름과 점수 이중 배열
+ * @param {[string, number, number, number][]} students 학생의 이름과 점수 이중 배열
  */
 const solution = (N, students) => {
   students.sort((a, b) => {
