@@ -43,7 +43,8 @@ function solution(input) {
 
   // 4, 이름 사전순
   if (a.name !== b.name) {
-    return a.name.localeCompare(b.name);
+    // return a.name.localeCompare(b.name);
+    return a.name < b.name ? -1 : 1;
   }
 })
 
