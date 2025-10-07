@@ -24,25 +24,30 @@ const solution = (S, T) => {
    * @returns
    */
   const dfs = (curStr) => {
-    if (answer === 1) return;
+    if (answer === 1) return; // dfs 탐색 중 이미 가능한 경우가 존재하면 종료
+    // 현재 문자열과 시작 문자열의 길이가 같으면
     if (curStr.length === S.length) {
+      // 만들 수 있는 경우인지 확인
       if (curStr === S) answer = 1;
-      return;
+      return; // 종료
     }
 
+    // 조건 1 확인
     if (curStr.endsWith('A')) {
-      dfs(curStr.slice(0, -1));
+      dfs(curStr.slice(0, -1)); // 마지막 문자(A)를 제거한 새로운 문자열로 탐색
     }
 
+    // 조건 2 확인
     if (curStr.startsWith('B')) {
+      // 첫 문자(B)를 제거하고 뒤집은 새로운 문자열로 탐색
       const nextStr = curStr.slice(1).split('').reverse().join('');
       dfs(nextStr);
     }
   };
 
-  dfs(T);
+  dfs(T); // 역으로 탐색 시작
 
-  return answer;
+  return answer; // 결과 반환
 };
 
 const [S, T] = input.map((v) => v.trim());
