@@ -2,6 +2,14 @@
 
 // 실행: node jincheol/week19/personal-greedy1.js
 
+const fs = require('fs');
+const input = fs
+  // .readFileSync('/dev/stdin')
+  .readFileSync('./jincheol/week19/input1.txt')
+  .toString()
+  .trim()
+  .split('\n');
+
 /**
  *
  * @param {number} N 행렬의 행 개수
