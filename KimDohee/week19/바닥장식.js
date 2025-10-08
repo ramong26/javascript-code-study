@@ -23,7 +23,6 @@ function solution(input) {
       }
 
       // 왼쪽
-      let leftY = y - 1;
       if (y - 1 >= 0 && !visited[x][y - 1] && board[x][y - 1] === '-') {
         dfs(x, y - 1);
       }
@@ -31,13 +30,11 @@ function solution(input) {
     else if (current === '|') {
       // '|'는 상하 이동
       // 아래쪽 - x 증가
-      let downX = x + 1;
       if (x + 1 < n && !visited[x + 1][y] && board[x + 1][y] === '|')  {
         dfs(x + 1, y);
       }
 
       // 위쪽 - x 감소
-      let upX = x - 1;
       if (x - 1 >= 0 && !visited[x - 1][y] && board[x - 1][y] === '|') {
         dfs(x - 1, y);
       }
