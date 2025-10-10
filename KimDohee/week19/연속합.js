@@ -1,4 +1,4 @@
-// 영상처리 (https://www.acmicpc.net/problem/21938)
+// 연속합 (https://www.acmicpc.net/problem/1912)
 // n개의 정수로 이루어진 임의의 수열이 주어진다. 우리는 이 중 연속된 몇 개의 수를 선택해서 구할 수 있는 합 중 가장 큰 합을 구하려고 한다. 단, 수는 한 개 이상 선택해야 한다.
 
 function solution(input) {
