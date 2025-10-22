@@ -32,10 +32,7 @@ const solution = (A, B) => {
       count++; // 변환 횟수 증가
     }
     // 둘 다 아닌 경우는 변환이 불가능한 경우
-    else {
-      count = -1;
-      break;
-    }
+    else return -1;
   }
 
   // 역으로 변환을 마친 숫자 B가 A보다 같거나 작은 경우
