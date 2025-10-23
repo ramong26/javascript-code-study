@@ -11,7 +11,7 @@ const input = fs
   .split('\n');
 
 /**
- *
+ * 현재 칸에 도달할 수 있는 3가지의 이전 칸들의 값 중 가장 큰 값과 현재 칸을 더하여 dp에 저장
  * @param {number} N 미로의 행 개수
  * @param {number} M 미로의 열 개수
  * @param {number[][]} maze 미로 구성
@@ -19,7 +19,7 @@ const input = fs
 const solution = (N, M, maze) => {
   const dp = Array.from({ length: N }, () => new Array(M).fill(0)); // dp 테이블
 
-  // dp 계산 (바텀 업 방식)
+  // dp 계산 (바텀 업 방식 = 작은 문제를 큰 문제로 확장)
   for (let r = 0; r < N; r++) {
     for (let c = 0; c < M; c++) {
       let maxPrevCandy = 0; // 이전 칸의 사탕 중 가장 큰 값
