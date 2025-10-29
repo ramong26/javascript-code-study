@@ -56,7 +56,7 @@ const solution = (N, S, M, V) => {
     if (!canPlay) return -1;
   }
 
-  // 마지막 곡의 볼륨을 최대값부터 순회
+  // 마지막 곡의 볼륨을 최댓값부터 순회
   for (let volume = M; volume >= 0; volume--) {
     const lastVolume = dp[N - 1][volume]; // 가능 여부 확인
     if (lastVolume) return volume;
