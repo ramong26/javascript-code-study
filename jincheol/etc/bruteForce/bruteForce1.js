@@ -1,5 +1,5 @@
 // 문제 링크: [로마 숫자 만들기](https://www.acmicpc.net/problem/16922)
-// 실행: node jincheol/etc/bruteForce1.js
+// 실행: node jincheol/etc/bruteForce/bruteForce1.js
 
 /**
  *
@@ -37,7 +37,7 @@ const path = require('path');
 const filePath =
   process.platform === 'linux'
     ? '/dev/stdin'
-    : path.join(__dirname, 'input.txt');
+    : path.join(__dirname, '..', 'input.txt');
 const input = fs.readFileSync(filePath).toString().trim().split('\n');
 
 const N = parseInt(input[0]);
