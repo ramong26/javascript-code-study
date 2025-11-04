@@ -15,21 +15,20 @@ function solution(input) {
 
   const dp = Array.from({length: n}, () => Array(21).fill(0n));  // dp[i][j] = i번째 숫자까지 사용, 현재값이 j인 경우의 수
 
-  const resultNum = numbers[n-1];
+  const resultNum = numbers[n-1];  // 마지막 숫자
 
-  // 초기화
   dp[0][numbers[0]] = 1n;
 
   for (let i = 1; i < n - 1; i++) {
     for (let prev = 0; prev <= 20; prev++) {
       if (dp[i-1][prev] > 0n) {
-        // +
-        let next = prev + numbers[i];
+        // 덧셈
+        let next = prev + numbers[i];  // 덧셈 연산
         if (next >= 0 && next <= 20) {
           dp[i][next] += dp[i-1][prev];
         }
 
-        // -
+        // 뺄셈
         next = prev - numbers[i];
         if (next >= 0 && next <= 20) {
           dp[i][next] += dp[i-1][prev];
@@ -38,7 +37,7 @@ function solution(input) {
     }
   }
 
-  return dp[n-2][resultNum].toString();
+  return dp[n-2][resultNum].toString();  // n-2번째까지 계산한 결과가 resultNum과 같은 경우의 수 반환
 }
 
 // 백준 제출용 코드
