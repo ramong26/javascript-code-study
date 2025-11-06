@@ -3,6 +3,7 @@
 // 실행: node jincheol/week23/study-dynamicProgramming3.js
 
 /**
+ * js로는 메모리 초과 발생
  * 0원부터 k원까지 작은 가치부터 만들 수 있는 경우의 수를 구해나감
  * @param {number} n 동전의 개수
  * @param {number} k 목표하는 동전의 합
