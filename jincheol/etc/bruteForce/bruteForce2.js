@@ -1,5 +1,5 @@
 // 문제 링크: [한윤정이 이탈리아에 가서 아이스크림을 사먹는데](https://www.acmicpc.net/problem/2422)
-// 실행: node jincheol/etc/bruteForce2.js
+// 실행: node jincheol/etc/bruteForce/bruteForce2.js
 
 /**
  *
@@ -41,7 +41,7 @@ const path = require('path');
 const filePath =
   process.platform === 'linux'
     ? '/dev/stdin'
-    : path.join(__dirname, 'input.txt');
+    : path.join(__dirname, '..', 'input.txt');
 const input = fs.readFileSync(filePath).toString().trim().split('\n');
 const [N, M] = input.shift().split(' ').map(Number);
 const icecreams = input.map((v) => v.trim().split(' ').map(Number));
