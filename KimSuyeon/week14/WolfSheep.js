@@ -1,12 +1,14 @@
 // https://www.acmicpc.net/problem/16956
 // 16956 - 늑대와 양 - 실버 3
 
+
 const input = require("fs")
   .readFileSync("./KimSuyeon/week14/input3.txt", "utf-8")
   .trim()
   .split("\n");
 // 백준 제출 시에는 아래 코드 사용
 // const input = require("fs").readFileSync("/dev/stdin").toString().trim().split("\n");
+
 
 // 접근 : 늑대 주변 4방향에 양이 있는지 확인하고, 양이 있으면 바로 "0" 출력
 // 양이 없으면 늑대 주변 4방향에 울타리를 설치하고 결과 출력
@@ -68,3 +70,4 @@ solution(input);
 // ..W...
 // ...W..
 // ......
+
