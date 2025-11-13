@@ -8,15 +8,16 @@
  * @param {number[]} numbers
  */
 const solution = (N, numbers) => {
-  const answer = [];
-  const maxHeap = new MaxHeap();
+  const answer = []; // 정답 숫자들을 저장할 배열
+  const maxHeap = new MaxHeap(); // 최대힙 생성
 
   for (let num of numbers) {
+    // 0이면 최대값 추출하여 배열에 저장
     if (num === 0) answer.push(maxHeap.poll());
-    else maxHeap.add(num);
+    else maxHeap.add(num); // 아니면 힙에 추가
   }
 
-  return answer.join('\n');
+  return answer.join('\n'); // 출력 조건에 맞게 변형
 };
 
 class MaxHeap {
