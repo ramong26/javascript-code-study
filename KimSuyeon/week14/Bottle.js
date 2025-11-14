@@ -72,3 +72,4 @@ function solution(input) {
 console.log(solution(input));
 // input 예시
 // 8 9 10
+

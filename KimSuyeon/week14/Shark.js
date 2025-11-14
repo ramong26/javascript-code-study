@@ -67,3 +67,4 @@ console.log(solution(input));
 // 1 0 0 0
 // 0 0 0 0
 // 0 0 0 1
+
