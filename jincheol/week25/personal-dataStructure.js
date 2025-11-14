@@ -1,4 +1,4 @@
-// 문제 링크: [폭발 문자열](https://www.acmicpc.net/problem/9935)
+// 문제 링크: [문자열 폭발](https://www.acmicpc.net/problem/9935)
 
 // 실행: node jincheol/week25/personal-dataStructure.js
 
