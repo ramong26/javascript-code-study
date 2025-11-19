@@ -5,7 +5,7 @@ const input = require("fs")
   .readFileSync("./KimSuyeon/week15/input.txt", "utf-8")
   .trim()
   .split("\n");
-// 백준 제출 시에는 아래 코드 사용
+// 백준 제출 시에는 아래 코드 사용ㄴ
 // const input = require("fs").readFileSync("/dev/stdin").toString().trim().split("\n");
 
 function solution(input) {

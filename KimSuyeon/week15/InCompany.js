@@ -8,7 +8,7 @@ const input = require("fs")
 // 백준 제출 시에는 아래 코드 사용
 // const input = require("fs").readFileSync("/dev/stdin").toString().trim().split("\n");
 
-// 퇴근 기록만 파악해서 회사에 남아있는 사람을 출력
+// 퇴근 기록만 파악해서 회사에 남아있는 사람을 출력ㅇ
 function solution(input) {
   const N = Number(input[0]);
   const record = new Map();

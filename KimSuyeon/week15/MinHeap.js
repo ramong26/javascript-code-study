@@ -2,10 +2,10 @@
 // 1927 - 최소 힙 - 실버 1
 
 const input = require("fs")
-  .readFileSync("./KimSuyeon/week15/input.txt", "utf-8")
+  .readFileSync("./KimSuyeon/week15/input2.txt", "utf-8")
   .trim()
   .split("\n");
-// 백준 제출 시에는 아래 코드 사용
+// 백준 제출 시에는 아래 코드 사용ㄴㄴㄴ
 // const input = require("fs").readFileSync("/dev/stdin").toString().trim().split("\n");
 
 /*
