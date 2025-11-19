@@ -88,7 +88,7 @@ class MaxHeap {
   // 힙을 아래에서부터 위로 (최대값 쪽으로) 정렬하는 함수
   heapifyUp(customStartIndex) {
     let currentIndex = customStartIndex || this.heapContainer.length - 1; // 기준 index가 없으면 제일 마지막 index 기준
-    // 부모가 있고 부모의 값이 더 클작을 때 (부모의 값이 더 커야하므로 바꿔야함)
+    // 부모가 있고 부모의 값이 더 작을 때 (부모의 값이 더 커야하므로 바꿔야함)
     while (
       this.hasParent(currentIndex) &&
       this.parent(currentIndex) < this.heapContainer[currentIndex]
