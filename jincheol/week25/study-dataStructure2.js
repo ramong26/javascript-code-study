@@ -115,7 +115,7 @@ class MinHeap {
     // 왼쪽 자식이 있을 경우 (왼쪽 자식이 없는데 오른쪽 자식이 있을 일이 없음 = 자식이 있을 경우)
     // 자식 중 값이 작은 자식과 현재 값을 비교하여 현재 값이 더 크면 아래로 내리는 과정(값이 작은 자식과 swap)
     while (this.hasLeftChild(currentIndex)) {
-      // 오른쪽 자식이 왼쪽 자식보다 같거니 작을 경우
+      // 오른쪽 자식이 왼쪽 자식보다 같거나 작을 경우
       const isRightChildSmallerThanLeftChild =
         this.rightChild(currentIndex) <= this.leftChild(currentIndex);
 
