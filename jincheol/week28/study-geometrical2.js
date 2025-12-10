@@ -25,7 +25,7 @@ const solution = (N, dots) => {
   // 최종 면적은 |sum1 - sum2| / 2
   // Math.abs()는 BigInt를 지원하지 않고, Number로 변환했을 때 숫자가 크면 오류가 발생하므로 삼항연산자 사용
   const absDiff = sum1 > sum2 ? sum1 - sum2 : sum2 - sum1;
-  // 소수점 2째 자리에서 반올림하면 되는 것이기에 Nuber 타입으로 변환해도 정밀도 차이가 없다
+  // 소수점 2째 자리에서 반올림하면 되는 것이기에 Number 타입으로 변환해도 정밀도 차이가 없다
   const area = (Number(absDiff) / 2).toFixed(1);
 
   return area;
