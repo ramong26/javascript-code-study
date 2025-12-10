@@ -21,13 +21,13 @@ const solution = (N, lines) => {
   for (let i = 1; i < N; i++) {
     const [nextStart, nextEnd] = lines[i]; // 현재 선분 다음 선분 좌표
 
-    // 현재 선분과 다음 선분이 겹치거나 이어지는 경우
+    // 현재 선분과 다음 선분이 겹치는 경우
     // (다음 선분의 시작점이 현재 선분의 끝점보다 작으면)
     if (nextStart < curEnd) {
       // 겹치는 부분 처리를 위해 더 넓은 범위로 curEnd 갱신
       curEnd = Math.max(curEnd, nextEnd);
     }
-    // 현재 선분이 다음 선분과 완전 분리된 경우
+    // 현재 선분이 다음 선분과 완전 분리된 경우나 연결되는 경우
     else {
       sumLength += curEnd - curStart; // 현재까지 유효했던 선분 길이 계산 후 추가
       // 다음 선분을 현재 선분으로 갱신
