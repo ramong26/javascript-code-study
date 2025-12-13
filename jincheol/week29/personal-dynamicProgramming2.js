@@ -11,6 +11,12 @@ const solution = (N, blocks) => {
   const dp = new Array(N).fill(Infinity); // dp 테이블, 최소 에너지를 구해야하기에 Infinity로 초기화
   dp[0] = 0; // 시작 보도블록 초기화
 
+  /**
+   *
+   * @param {string} cur 현재 보도블록
+   * @param {string} next 다음 보도블록
+   * @returns {boolean} BOJ 순서가 맞는지 여부
+   */
   const isValidBlock = (cur, next) => {
     if (cur === 'B' && next === 'O') return true;
     if (cur === 'O' && next === 'J') return true;
