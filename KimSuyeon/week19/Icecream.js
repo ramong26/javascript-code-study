@@ -1,5 +1,5 @@
 // https://www.acmicpc.net/problem/2422
-// 한윤정이 이탈리아에 가서 아이스크림을 사먹는데 - 골드 4
+// 한윤정이 이탈리아에 가서 아이스크림을 사먹는데 - 실버 4
 
 const input = require("fs")
   .readFileSync("./KimSuyeon/week19/input.txt", "utf-8")
